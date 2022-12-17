@@ -1,0 +1,30 @@
+USE DATABASE DEMO_DATABASE;
+
+create or replace table MB_COUNTRIES
+
+(COUNTRY_ID VARCHAR(10),
+COUNTRY_NAME VARCHAR(20),
+COUNTRY_NAME_LOCAL VARCHAR(30),
+COUNTRY_FLAG_URL VARCHAR(60));
+
+INSERT INTO MB_COUNTRIES
+
+VALUES('123456','United Kingdom','England','C:\PowerBiDesktopSamples\Images\BritishFlag.png'),
+('123456','France','France','C:\PowerBiDesktopSamples\Images\FrenchFlag.png'),
+('123456','USA','United States','C:\PowerBiDesktopSamples\Images\USAFlag.png'),
+('123456','Germany','Deuchesland','C:\PowerBiDesktopSamples\Images\GermanFlag.png'),
+ ('123456','Spain','Spain','C:\PowerBiDesktopSamples\Images\SpanishFlag.png'),
+ ('123456','Switzerland','Switzerland','C:\PowerBiDesktopSamples\Images\SwissFlag.png');
+ 
+ describe table MB_COUNTRIES;
+ select * from  MB_COUNTRIES;
+ 
+ select distinct COUNTRY_NAME from  MB_COUNTRIES;
+
+ SELECT *,
+ 
+CASE
+WHEN COUNTRY_NAME IN ('france','USA','United kingdom') THEN 'OUTBOUND'
+WHEN COUNTRY_NAME IN ('Spain','Germany') THEN 'INBOUND' 
+END AS COUNTRY_TYPE
+FROM MB_COUNTRIES;
